@@ -1,0 +1,283 @@
+[
+  {
+    "op": "core/column-removal",
+    "columnName": "Dividends",
+    "description": "Remove column Dividends"
+  },
+  {
+    "op": "core/column-removal",
+    "columnName": "Stock Splits",
+    "description": "Remove column Stock Splits"
+  },
+  {
+    "op": "core/column-rename",
+    "oldColumnName": "File",
+    "newColumnName": "Company",
+    "description": "Rename column File to Company"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "Company",
+    "expression": "jython:return value.replace(\"2019-09-01_2020-09-07_\",\"\").replace(\".csv\",\"\")",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column Company using expression jython:return value.replace(\"2019-09-01_2020-09-07_\",\"\").replace(\".csv\",\"\")"
+  },
+  {
+    "op": "core/mass-edit",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "sector",
+    "expression": "value",
+    "edits": [
+      {
+        "from": [],
+        "fromBlank": true,
+        "fromError": false,
+        "to": "Technology"
+      }
+    ],
+    "description": "Mass edit cells in column sector"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "range",
+          "name": "Open",
+          "expression": "value",
+          "columnName": "Open",
+          "from": 0,
+          "to": 100,
+          "selectNumeric": true,
+          "selectNonNumeric": true,
+          "selectBlank": true,
+          "selectError": true
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "Open",
+    "expression": "jython:return value.round(3)",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column Open using expression jython:return value.round(3)"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "Open",
+    "expression": "value.toNumber()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column Open using expression value.toNumber()"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "Open",
+    "expression": "value.toString()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column Open using expression value.toString()"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "Open",
+    "expression": "value.toNumber()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column Open using expression value.toNumber()"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "range",
+          "name": "Open",
+          "expression": "value",
+          "columnName": "Open",
+          "from": 0,
+          "to": 100,
+          "selectNumeric": true,
+          "selectNonNumeric": true,
+          "selectBlank": true,
+          "selectError": true
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "Open",
+    "expression": "value.toString()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column Open using expression value.toString()"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "Open",
+    "expression": "jython:fin = ''\ni = 0\nfor c in range(len(value)):\n    if value[c] == '.':\n        return fin + value[c] + value[c+1] + value[c+2] + value[c+3]\n    else:\n        fin = fin + value[c]\nreturn fin",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column Open using expression jython:fin = ''\ni = 0\nfor c in range(len(value)):\n    if value[c] == '.':\n        return fin + value[c] + value[c+1] + value[c+2] + value[c+3]\n    else:\n        fin = fin + value[c]\nreturn fin"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "Open",
+    "expression": "value.toNumber()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column Open using expression value.toNumber()"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "High",
+    "expression": "value.toString()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column High using expression value.toString()"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "High",
+    "expression": "jython:fin = ''\ni = 0\nfor c in range(len(value)):\n    if value[c] == '.':\n        return fin + value[c] + value[c+1] + value[c+2] + value[c+3]\n    else:\n        fin = fin + value[c]\nreturn fin",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column High using expression jython:fin = ''\ni = 0\nfor c in range(len(value)):\n    if value[c] == '.':\n        return fin + value[c] + value[c+1] + value[c+2] + value[c+3]\n    else:\n        fin = fin + value[c]\nreturn fin"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "High",
+    "expression": "value.toNumber()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column High using expression value.toNumber()"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "Low",
+    "expression": "value.toString()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column Low using expression value.toString()"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "Low",
+    "expression": "jython:fin = ''\ni = 0\nfor c in range(len(value)):\n    if value[c] == '.':\n        return fin + value[c] + value[c+1] + value[c+2] + value[c+3]\n    else:\n        fin = fin + value[c]\nreturn fin",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column Low using expression jython:fin = ''\ni = 0\nfor c in range(len(value)):\n    if value[c] == '.':\n        return fin + value[c] + value[c+1] + value[c+2] + value[c+3]\n    else:\n        fin = fin + value[c]\nreturn fin"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "Low",
+    "expression": "value.toNumber()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column Low using expression value.toNumber()"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "Close",
+    "expression": "value.toString()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column Close using expression value.toString()"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "Close",
+    "expression": "jython:fin = ''\ni = 0\nfor c in range(len(value)):\n    if value[c] == '.':\n        return fin + value[c] + value[c+1] + value[c+2] + value[c+3]\n    else:\n        fin = fin + value[c]\nreturn fin",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column Close using expression jython:fin = ''\ni = 0\nfor c in range(len(value)):\n    if value[c] == '.':\n        return fin + value[c] + value[c+1] + value[c+2] + value[c+3]\n    else:\n        fin = fin + value[c]\nreturn fin"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "Close",
+    "expression": "value.toNumber()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column Close using expression value.toNumber()"
+  }
+]
